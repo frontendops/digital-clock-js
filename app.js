@@ -76,5 +76,7 @@ formatNumbers = () => {
     return false;
 }
 
+//always call get time
+
 setInterval(getTime, 1000);
 
