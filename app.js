@@ -13,7 +13,7 @@ const noon = document.querySelector(".noon");
 
 //set variables
 //let allows us to change these values in the future
-let currentHour = 1;
+let currentHour = 0;
 let currentMins = 0;
 let currentSeconds = 0;
 
@@ -23,7 +23,7 @@ let currentSeconds = 0;
 function getTime() {
     let date = new Date
 
-    //currentHour = date.getHours();
+    currentHour = date.getHours();
     currentMins = date.getMinutes();
     currentSeconds = date.getSeconds();
 
