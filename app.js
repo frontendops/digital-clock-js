@@ -32,7 +32,7 @@ function getTime() {
     sec.innerHTML = currentSeconds;
 
     formatTime();
-    formatNumbers();
+    //formatNumbers();
 
 }
 
@@ -41,27 +41,30 @@ formatTime = () => {
     //am or pm
     if (currentHour >= 12) {
         currentHour = currentHour - 12;
-        noon.innerHTML = 'pm';
+        noon.innerHTML = '<b>pm</b>';
     } else if (currentHour <= 11) {
         currentHour = currentHour;
-        noon.innerHTML = 'am';
+        noon.innerHTML = '<b>am</b>';
     }
 }
 
 //check if numbers are single digit ot add a zero in front of them
 formatNumbers = () => {
-    if (currentHour < 10) {
-        hours.innerHTML = `0${currentHour}`;
-    }
-
     if (currentSeconds < 10) {
         sec.innerHTML = `0${currentSeconds}`;
     }
 
+    if (currentHour < 10) {
+        hours.innerHTML = `0${currentHour}`;
+    }
+
+
     if (currentMins < 10) {
-        mins.innerHTML = `0${currentSeconds}`;
+        mins.innerHTML = `0${currentMins}`;
 
     }
+
+    return false;
 }
 
 setInterval(getTime, 1000);
