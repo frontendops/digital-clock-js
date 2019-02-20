@@ -32,18 +32,32 @@ function getTime() {
     sec.innerHTML = currentSeconds;
 
     formatTime();
-    //formatNumbers();
+    formatNumbers();
 
 }
 
 //instead of military time show am or pm
 formatTime = () => {
+    let fixedHour = currentHour - 12;
     //am or pm
-    if (currentHour >= 12) {
-        currentHour = currentHour - 12;
+    if (currentHour > 12 && currentHour <= 23) {
         noon.innerHTML = '<b>pm</b>';
+
+        if (fixedHour < 10) {
+            hours.innerHTML = `0${fixedHour}`;
+        } else {
+            hours.innerHTML = `${fixedHour}`;
+        }
+
     } else if (currentHour <= 11) {
         currentHour = currentHour;
+        noon.innerHTML = '<b>am</b>';
+
+    } else if (currentHour == 12) {
+        noon.innerHTML = '<b>pm</b>';
+
+    } else if (currentHour === 24) {
+        hours.innerHTML = `${fixedHour}`;
         noon.innerHTML = '<b>am</b>';
     }
 }
@@ -54,14 +68,9 @@ formatNumbers = () => {
         sec.innerHTML = `0${currentSeconds}`;
     }
 
-    if (currentHour < 10) {
-        hours.innerHTML = `0${currentHour}`;
-    }
-
 
     if (currentMins < 10) {
         mins.innerHTML = `0${currentMins}`;
-
     }
 
     return false;
